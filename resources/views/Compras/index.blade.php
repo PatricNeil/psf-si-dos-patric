@@ -27,7 +27,6 @@
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
                 <th>Proveedor</th>
                 <th>Fecha</th>
                 <th>Total</th>
@@ -37,7 +36,6 @@
         <tbody>
             @foreach ($compras as $compra)
                 <tr>
-                    <td>{{ $compra->id_compra }}</td>
                     <td>{{ $compra->id_compra }}</td>
                     <td>{{ $compra->proveedor->nombre }}</td>
                     <td>{{ $compra->fecha_compra }}</td>
