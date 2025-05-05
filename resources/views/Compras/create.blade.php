@@ -4,7 +4,6 @@
     <h1>Registrar Producto</h1>
 @stop
 @section('content')
-<h2>Registrar nueva compra</h2>
 <div class="card">
     <div class="card-body">
         <form action="{{ route('Compras.store') }}" method="POST">

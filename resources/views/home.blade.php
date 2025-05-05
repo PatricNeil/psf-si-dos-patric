@@ -11,6 +11,7 @@
 
 @section('content')
 <div class="container-fluid">
+    <!-- Notificación de éxito -->
     @if (session('success'))
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -25,6 +26,7 @@
     </script>
     @endif
 
+    <!-- Mensaje de bienvenida -->
     <div class="welcome-message mb-4">
         <div class="card">
             <div class="card-body">
@@ -35,8 +37,9 @@
         </div>
     </div>
 
+    <!-- Tarjetas de estadísticas -->
     <div class="row">
-        <!----Clientes--->
+        <!-- Clientes -->
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">
@@ -59,6 +62,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Artistas -->
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">
@@ -81,6 +86,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Reservas -->
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">
@@ -103,8 +110,31 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-3 col-md-6">
+    <div class="card bg-primary text-white mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8">
+                    <i class="fas fa-receipt"></i><span class="m-1">Detalle Ventas</span>
+                </div>
+                <div class="col-4">
+                    <?php
+                    use App\Models\DetalleVenta;
+                    $detalleVentas = count(DetalleVenta::all());
+                    ?>
+                    <p class="text-center fw-bold fs-4">{{$detalleVentas}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex align-items-center justify-content-between">
+            <a class="small text-white stretched-link" href="{{ route('DetallesVentas.index') }}">Ver más</a>
+            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+        </div>
+    </div>
+</div>
         
-        <!-- Acceso directo para crear nueva reserva -->
+        <!-- Accesos directos -->
+        <!-- Nueva Reserva Rápida -->
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
                 <div class="card-body">
@@ -122,7 +152,7 @@
             </div>
         </div>
 
-        <!-- Acceso directo para agendar sesión -->
+        <!-- Agendar Sesión -->
         <div class="col-xl-3 col-md-6">
             <div class="card bg-info text-white mb-4">
                 <div class="card-body">
@@ -139,13 +169,14 @@
                 </div>
             </div>
         </div>
-       
+    </div>
 </div>
 @stop
 
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <style>
+        /* Estilos de tarjetas */
         .card {
             border: none;
             border-radius: 10px;
@@ -156,6 +187,8 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Colores de fondo */
         .bg-primary {
             background: linear-gradient(135deg, #667eea, #764ba2) !important;
         }
@@ -180,13 +213,19 @@
         .bg-purple {
             background: linear-gradient(135deg, #9f7aea, #805ad5) !important;
         }
+        
+        /* Iconos */
         .card-body i {
             font-size: 1.5rem;
         }
+        
+        /* Pie de tarjeta */
         .card-footer {
             background: rgba(0, 0, 0, 0.1);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
+        /* Mensaje de bienvenida */
         .welcome-message {
             padding: 20px;
             background-color: #f8f9fa;
@@ -194,6 +233,8 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Cita motivacional */
         .motivational-quote {
             margin-top: 30px;
         }
@@ -201,9 +242,12 @@
 @stop
 
 @section('js')
+    <!-- Scripts externos -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    
+    <!-- Scripts personalizados -->
     <script>
         console.log("Panel de control cargado correctamente.");
     </script>

@@ -1,27 +1,63 @@
-<!-- filepath: c:\xampp\htdocs\proyectoSI2\resources\views\pdf\detalles.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte de Detalles</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 22px;
+            border-bottom: 2px solid #555;
+            padding-bottom: 5px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #222;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 30px;
         }
+
         th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
+            border: 1px solid #999;
+            padding: 6px 8px;
+            text-align: center;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .right {
+            text-align: right;
         }
     </style>
 </head>
 <body>
     <h1>Reporte de Detalles de Ventas y Compras</h1>
+
     <h2>Detalles de Ventas</h2>
     <table>
         <thead>
@@ -30,8 +66,8 @@
                 <th>Venta</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
+                <th>Precio Unitario (Bs.)</th>
+                <th>Subtotal (Bs.)</th>
             </tr>
         </thead>
         <tbody>
@@ -41,8 +77,8 @@
                     <td>{{ $detalle->id_venta }}</td>
                     <td>{{ $detalle->id_producto }}</td>
                     <td>{{ $detalle->cantidad }}</td>
-                    <td>{{ $detalle->precio_unitario }}</td>
-                    <td>{{ $detalle->subtotal }}</td>
+                    <td class="right">{{ number_format($detalle->precio_unitario, 2, ',', '.') }}</td>
+                    <td class="right">{{ number_format($detalle->subtotal, 2, ',', '.') }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -56,8 +92,8 @@
                 <th>Compra</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
+                <th>Precio Unitario (Bs.)</th>
+                <th>Subtotal (Bs.)</th>
             </tr>
         </thead>
         <tbody>
@@ -67,8 +103,8 @@
                     <td>{{ $detalle->id_compra }}</td>
                     <td>{{ $detalle->id_producto }}</td>
                     <td>{{ $detalle->cantidad }}</td>
-                    <td>{{ $detalle->precio_unitario }}</td>
-                    <td>{{ $detalle->subtotal }}</td>
+                    <td class="right">{{ number_format($detalle->precio_unitario, 2, ',', '.') }}</td>
+                    <td class="right">{{ number_format($detalle->subtotal, 2, ',', '.') }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -13,7 +13,6 @@
         <table id="productos" class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th width="30px">ID</th>
                     <th>Nombre del Producto</th>
                     <th>Precio Unitario</th>
                     <th>Stock</th>
@@ -24,7 +23,6 @@
             <tbody id="productos-table-body">
                 @foreach ($productos as $producto)
                     <tr>
-                        <td>{{ $producto->id }}</td>
                         <td>{{ $producto->nombre }}</td>
                         <td>{{ $producto->precio_unitario }}</td>
                         <td>{{ $producto->stock }}</td>

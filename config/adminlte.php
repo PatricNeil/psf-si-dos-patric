@@ -113,7 +113,7 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/logo1.JPG',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -300,11 +300,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
+      
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -317,83 +313,69 @@ return [
             'text' => 'Buscar',
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Dashboard',
+            'url' => 'home',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        ['header' => 'GESTIÓN PRINCIPAL'],
         [
             'text' => 'Clientes',
-            'url'  => 'Clientes',
-            'icon' => 'fas fa-fw fa-users',
+            'url' => 'Clientes',
+            'icon' => 'fas fa-fw fa-user-friends',
         ],
         [
             'text' => 'Artistas',
-            'url'  => 'Artistas',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'Reservas',
-            'url'  => 'Reservas',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'Productos',
-            'url'  => 'Productos',
-            'icon' => 'fas fa-fw fa-users',
+            'url' => 'Artistas',
+            'icon' => 'fas fa-fw fa-paint-brush',
         ],
         [
             'text' => 'Proveedores',
-            'url'  => 'Proveedores',
-            'icon' => 'fas fa-fw fa-users',
+            'url' => 'Proveedores',
+            'icon' => 'fas fa-fw fa-truck',
         ],
+        
+        ['header' => 'OPERACIONES'],
         [
-            'text' => 'Compras',
-            'url'  => 'Compras',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'Detalles Compras',
-            'url'  => 'DetallesCompras',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'Salir',
-            'url'  => 'logout',
-            'icon' => 'fas fa-fw fa-sign-out-alt',
-        ],
-        [
-            'text' => 'CHAT',
-            'url'  => '/chatbot',
-            'icon' => 'fas fa-fw fa-comments',
+            'text' => 'Reservas',
+            'url' => 'Reservas',
+            'icon' => 'fas fa-fw fa-calendar-check',
         ],
         [
             'text' => 'Ventas',
-            'url'  => 'Ventas',
-            'icon' => 'fas fa-fw fa-comments',
+            'url' => 'Ventas',
+            'icon' => 'fas fa-fw fa-cash-register',
         ],
         [
-            'text' => 'Detalle Venta',
-            'url'  => 'DetallesVentas',
-            'icon' => 'fas fa-fw fa-comments',
+            'text' => 'Detalle Ventas',
+            'url' => 'DetallesVentas',
+            'icon' => 'fas fa-fw fa-receipt',
         ],
+        [
+            'text' => 'Compras',
+            'url' => 'Compras',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+        ],
+        [
+            'text' => 'Detalle Compras',
+            'url' => 'DetallesCompras',
+            'icon' => 'fas fa-fw fa-file-invoice',
+        ],
+        
+        ['header' => 'INVENTARIO'],
+        [
+            'text' => 'Productos',
+            'url' => 'Productos',
+            'icon' => 'fas fa-fw fa-boxes',
+        ],
+        
+        ['header' => 'COMUNICACIÓN'],
+        [
+            'text' => 'Chat',
+            'url' => '/chatbot',
+            'icon' => 'fas fa-fw fa-comments',
+        ]
+        
+        
         
 
 
