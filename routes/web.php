@@ -9,9 +9,11 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\DetalleCompraController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DetalleVentaController;
+use App\Http\Controllers\VentaController;
 use App\Http\Controllers\SesionController;
-
+use App\Http\Controllers\PDFController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,8 @@ Route::resource('Productos', ProductoController::class);
 Route::resource('Proveedores', ProveedorController::class);
 Route::resource('Compras', CompraController::class);
 Route::resource('DetallesCompras', DetalleCompraController::class);
+Route::resource('DetallesVentas', DetalleVentaController::class);
+Route::resource('Ventas', VentaController::class);
 
 Route::post('/chatbot/respond', [ChatbotController::class, 'respond'])->name('admin.chatbot.respond');
 Route::get('/chatbot', function () {
@@ -50,3 +54,8 @@ Route::get('/clientes/verificar', [App\Http\Controllers\ClienteController::class
 Route::get('/sesiones/calendario', [SesionController::class, 'calendario'])->name('sesiones.calendario');
 Route::post('/sesiones', [SesionController::class, 'store'])->name('sesiones.store');
 Route::get('/sesiones/crear', [SesionController::class, 'crear'])->name('sesiones.crear');
+
+
+
+
+Route::get('/reporte/pdf', [PDFController::class, 'generarPDF'])->name('reporte.pdf');
