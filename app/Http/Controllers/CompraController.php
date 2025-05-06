@@ -18,14 +18,17 @@ class CompraController extends Controller
 
     public function create()
     {
-        $proveedores = Proveedor::all();
-        return view('Compras.create', compact('proveedores'));
+        $productos = Producto::all(); // Ajusta según tu modelo
+        $proveedores = Proveedor::all(); // Ajusta según tu modelo
+        return view('Compras.create', compact('productos', 'proveedores'));
     }
+
     public function show(string $id)
     {
         $compra = Compra::with('proveedor')->find($id);
         return view('Compras.show', compact('compra'));
     }
+
     public function store(Request $request)
     {
         $productoExistente = Producto::where('nombre', $request->nombre)
@@ -53,7 +56,7 @@ class CompraController extends Controller
             'total' => $request->total,
         ]);
         DetalleCompra::create([
-            'id_compra' => $compra->id_compra, 
+            'id_compra' => $compra->id_compra,
             'id_producto' => $producto->id_producto,
             'cantidad' => $request->stock,
             'precio_unitario' => $request->precio_unitario,

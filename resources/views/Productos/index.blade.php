@@ -1,49 +1,64 @@
 @extends('adminlte::page')
-@section('title', 'Productos')
-@section('content_header')
-    <h1>Listado de Productos</h1>
-@stop
-@section('content')
-<style>
-    body {
-        background-color: #f8f9fa !important; /* Cambia este color si lo prefieres */
-    }
-</style>
-    <div class="table-responsive">
-        <table id="productos" class="table table-bordered table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nombre del Producto</th>
-                    <th>Precio Unitario</th>
-                    <th>Stock</th>
-                    <th>Categoría</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="productos-table-body">
-                @foreach ($productos as $producto)
-                    <tr>
-                        <td>{{ $producto->nombre }}</td>
-                        <td>{{ $producto->precio_unitario }}</td>
-                        <td>{{ $producto->stock }}</td>
-                        <td>{{ $producto->categoria }}</td>
-                        <td>
-                            <a href="{{ route('Productos.show', $producto) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Ver</a>
-                            <a href="{{ route('Productos.edit', $producto) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                            <form action="{{ route('Productos.destroy', $producto) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
 
+@section('title', 'Listado de Productos')
+
+@section('content_header')
+    <h1 class="font-weight-bold text-primary">
+        <i class="fas fa-box mr-2"></i>Listado de Productos
+    </h1>
+@stop
+
+@section('content')
+<div class="card shadow-lg border-0 rounded-lg">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="{{ route('Productos.create') }}" class="btn btn-primary shadow px-4 py-2 rounded-pill">
+                <i class="fas fa-plus mr-2"></i>Nuevo Producto
+            </a>
+        </div>
+        <div class="table-responsive rounded-lg overflow-hidden shadow-sm">
+            <table class="table table-bordered table-hover mb-0">
+                <thead class="bg-gradient-primary text-white">
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th class="text-right">Precio Unitario</th>
+                        <th class="text-center">Stock</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @foreach ($productos as $producto)
+                        <tr>
+                            <td class="text-center">{{ $producto->id_producto }}</td>
+                            <td>{{ $producto->nombre }}</td>
+                            <td>{{ ucfirst($producto->categoria) }}</td>
+                            <td class="text-right">${{ number_format($producto->precio_unitario, 2) }}</td>
+                            <td class="text-center">{{ $producto->stock }}</td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm shadow" role="group">
+                                    <a href="{{ route('Productos.edit', $producto->id_producto) }}" 
+                                       class="btn btn-warning rounded-left" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{{ route('Productos.destroy', $producto->id_producto) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger rounded-right" title="Eliminar"
+                                                onclick="return confirm('¿Está seguro de eliminar este producto?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 @stop
 
 @section('js')
@@ -52,7 +67,7 @@
     <script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js"></script>
     <script>
         $(document).ready(function(){
-            $('#productos').DataTable({
+            $('.table').DataTable({
                 "ordering": false,
                 "language": {
                     "search": "Buscar",
