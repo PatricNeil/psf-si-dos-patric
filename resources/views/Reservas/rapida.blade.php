@@ -12,7 +12,7 @@
     <div class="card-body">
         <form action="{{ route('Reservas.storeRapida') }}" method="POST" id="reservaRapidaForm">
             @csrf
-            
+            <!-- Mensaje de éxito o error -->
             <!-- Navegación por pestañas -->
             <ul class="nav nav-tabs" id="reservaTab" role="tablist">
                 <li class="nav-item">
