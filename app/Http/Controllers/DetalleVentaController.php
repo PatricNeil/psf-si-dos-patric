@@ -11,16 +11,13 @@ class DetalleVentaController extends Controller
 {
     public function index()
     {
-        // Obtener todos los detalles de venta
         $detalles = DetalleVenta::with('producto', 'venta')->get();
 
-        // Retornar la vista con los detalles de venta
         return view('DetallesVentas.index', compact('detalles'));
     }
 
     public function create($id_venta)
     {
-        // Obtener los productos disponibles
         $productos = Producto::all();
 
         // Retornar la vista con los productos y el ID de la venta
